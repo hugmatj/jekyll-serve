@@ -1,5 +1,36 @@
 # Jekyll in a Docker Container
 
+__Forked from:__ https://github.com/BretFisher/jekyll-serve
+
+With the addition of allowing for "--drafts"
+
+## Serve and watch
+
+```bash
+
+cd to/wehre/your/_config.yml/exist
+docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve
+
+```
+
+## Serve and watch with drafts
+
+```bash
+
+cd to/wehre/your/_config.yml/exist
+docker run -p 80:4000 -v $(pwd):/site -e JEKYLL_DRAFTS=true bretfisher/jekyll-serve
+
+```
+
+## View the Jekyll site
+
+You can then access the jekyll site using your Docker IP (your IP may differ)
+
+__http://192.168.99.100__
+
+
+## Below are the docs from the original author / repo (incl. Copyright notice):
+
 > But this has been done. Why not `docker pull jekyll/jekyll`?
 
 - I wanted defaults to be `jekyll serve` when container is run, which I use 90% of time

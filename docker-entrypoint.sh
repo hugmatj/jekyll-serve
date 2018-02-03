@@ -9,9 +9,10 @@ if [ "$JEKYLL_NEW" = true ]; then
   jekyll new .
 fi
 
-if [ "$JEKYLL_DRAFTS"  = true ]; then
+if [ "$JEKYLL_DRAFTS" = true ]; then
   echo "with drafts"
-  --drafts
+  bundle install
+  bundle exec jekyll serve --force_polling  -H 0.0.0.0  -P 4000 --watch --drafts
 fi
 
 if [ ! -f Gemfile ]; then
