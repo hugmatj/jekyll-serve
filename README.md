@@ -28,6 +28,10 @@ You can then access the jekyll site using your Docker IP (your IP may differ)
 
 __http://192.168.99.100__
 
+## Support
+
+Please use the issue tracker in GitHub.
+
 
 ## Below are the docs from the original author / repo (incl. Copyright notice):
 
