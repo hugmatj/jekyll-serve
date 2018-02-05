@@ -9,10 +9,21 @@ if [ "$JEKYLL_NEW" = true ]; then
   jekyll new .
 fi
 
-if [ "$JEKYLL_DRAFTS" = true ]; then
-  echo "with drafts"
-  bundle install
-  bundle exec jekyll serve --force_polling  -H 0.0.0.0  -P 4000 --watch --drafts
+COMMAND="bundle exec jekyll serve --force_polling  -H 0.0.0.0  -P 4000 --watch"
+DRAFTS=" --drafts"
+INCREMENTAL=" --incremental"
+
+if [ "$DRAFTS" = true ] || [ "$INCREMENTAL" = true ]; then
+  if [ "$DRAFTS" = true ] && [ "$INCREMENTAL" = true ]; then
+    bundle install
+    ${COMMAND}${DRAFTS}${INCREMENTAL}
+  fi
+  elif [ "$DRAFTS" = true ] && [ -v "$INCREMENTAL" == false ]; then
+    bundle install
+    ${COMMAND}${DRAFTS}
+  elif [ "$INCREMENTAL" = true ] && [ -v "$DRAFTS" == false ]; then
+    bundle install
+    ${COMMAND}${INCREMENTAL}
 fi
 
 if [ ! -f Gemfile ]; then
